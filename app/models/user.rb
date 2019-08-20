@@ -4,5 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, :last_name, presence: true
+  validates_presence_of :first_name, :last_name, message: "can't be blank"
 end
