@@ -9,6 +9,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_create_params)
+    @post.user = current_user
+    
     if @post.valid?
       @post.save
       redirect_to @post, notice: "Post has been created successfully"
