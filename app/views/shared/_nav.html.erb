@@ -13,6 +13,9 @@
           <li class="nav-item <%= active?(posts_path) %>">
             <%= link_to "Time Entries #{sr_only_span(posts_path)}".html_safe, posts_path, { class: "nav-link" } %>
           </li>
+          <li class="nav-item <%= active?(new_post_path) %>">
+            <%= link_to "Add New Entry #{sr_only_span(posts_path)}".html_safe, new_post_path, { id: "new-post-from-nav", class: "nav-link" } %>
+          </li>
         </ul>
         
         <ul class="navbar-nav ml-md-auto">

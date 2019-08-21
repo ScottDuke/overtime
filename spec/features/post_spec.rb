@@ -77,5 +77,15 @@ describe "navigate" do
       expect(page).to have_content("UPDATED: some text")
     end
   end
+
+  describe "new" do
+    it "has a link from the homepage" do
+      visit root_path
+      
+      click_link("new-post-from-nav")
+
+      expect(page.status_code).to eq(200)
+    end
+  end
   
 end
