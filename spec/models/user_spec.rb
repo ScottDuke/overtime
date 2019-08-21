@@ -23,4 +23,11 @@ RSpec.describe User, type: :model do
     end
     
   end
+
+  describe "#full_name" do
+    it "returns the full name of the user" do
+      @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "test", last_name: "testy")
+      expect(@user.full_name).to eql("test testy".titleize)
+    end
+  end
 end

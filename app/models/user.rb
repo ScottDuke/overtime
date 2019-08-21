@@ -7,4 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :first_name, :last_name, message: "can't be blank"
+
+  def full_name
+    "#{first_name} #{last_name}".titleize
+  end
+  
 end
