@@ -1,24 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "creation" do
-    before do
-      @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "test", last_name: "testy")
-    end
+  let(:user) { FactoryBot.create(:user) }
 
+  describe "creation" do
     it "creates a user" do
-      expect(@user).to be_valid  
+      expect(user).to be_valid  
     end
 
     context "is not valid when" do
       it "first_name is empty" do
-        @user.first_name = nil
-        expect(@user).to_not be_valid
+        user.first_name = nil
+        expect(user).to_not be_valid
       end
 
        it "last_name is empty" do
-        @user.last_name = nil
-        expect(@user).to_not be_valid
+        user.last_name = nil
+        expect(user).to_not be_valid
       end
     end
     
@@ -26,8 +24,7 @@ RSpec.describe User, type: :model do
 
   describe "#full_name" do
     it "returns the full name of the user" do
-      @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "test", last_name: "testy")
-      expect(@user.full_name).to eql("test testy".titleize)
+      expect(user.full_name).to eql("test testy".titleize)
     end
   end
 end
