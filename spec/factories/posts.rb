@@ -1,11 +1,14 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
-    date Date.today
-    rationale "something"
+    user
+    date { Date.today }
+    rationale { "something" }
+    
   end
 
-  factory :second_post, model: "Post" do
-    date Date.yesterday
-    rationale "something else"
+  factory :second_post, class: "Post" do
+    user
+    date { Date.yesterday }
+    rationale { "something else" }
   end
 end
