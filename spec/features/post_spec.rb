@@ -8,9 +8,10 @@ describe "navigate" do
   end
 
   describe "index" do
+    let!(:post1) { FactoryBot.create(:post, user: user) }
+    let!(:post2) { FactoryBot.create(:second_post, user: user) }
+
     before do
-      FactoryBot.create(:post)
-      FactoryBot.create(:second_post)
       visit posts_path
     end
 
@@ -52,6 +53,28 @@ describe "navigate" do
 
       actual_rationale_value = User.last.posts.last.rationale
       expect(actual_rationale_value).to eql(expected_rationale_value)
+    end
+  end
+
+  describe "edit" do
+    let!(:post) { FactoryBot.create(:post, user: user) }
+
+    it "can be reached by clicking edit on index page" do
+      visit posts_path
+
+      click_link "edit_#{post.id}"  
+
+      expect(page.status_code).to eq(200)
+    end
+
+    it "can be edited" do
+      visit edit_post_path(post)
+
+      fill_in "post[date]",	with: Date.today
+      fill_in "post[rationale]",	with: "UPDATED: some text"
+      click_on "Save"
+
+      expect(page).to have_content("UPDATED: some text")
     end
   end
   
