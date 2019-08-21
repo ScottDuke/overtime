@@ -81,8 +81,26 @@ describe "navigate" do
   describe "new" do
     it "has a link from the homepage" do
       visit root_path
-      
+
       click_link("new-post-from-nav")
+
+      expect(page.status_code).to eq(200)
+    end
+  end
+
+  describe "delete" do
+    let!(:post) { FactoryBot.create(:post, user: user) }
+
+    it "has a link to delete" do
+      visit posts_path
+
+      expect(page).to have_link("Delete", href: post_path(post))
+    end
+
+    it "can be deleted" do
+      visit posts_path
+
+      click_link "delete_#{post.id}"
 
       expect(page.status_code).to eq(200)
     end

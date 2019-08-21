@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %w(show edit update)
+  before_action :set_post, only: %w(show edit update destroy)
 
   def index
     @posts = Post.all
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_create_params)
+    @post = Post.new(post_params)
     @post.user = current_user
     
     if @post.valid?
@@ -26,16 +26,24 @@ class PostsController < ApplicationController
   def edit;end
 
   def update
-    if @post.update(post_create_params)
+    if @post.update(post_params)
       redirect_to @post, notice: "Post has been updated successfully"
     else
       render :edit, notice: "Could not update post"
     end
   end
 
+  def destroy
+    if @post.destroy
+      redirect_to posts_path, notice: "Post has been updated successfully"
+    else
+      redirect_to @post, notice: "Unable to delete post"
+    end
+  end
+
   private
   
-  def post_create_params
+  def post_params
     params.require(:post).permit(:date, :rationale)
   end
 
