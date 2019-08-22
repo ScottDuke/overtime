@@ -36,28 +36,24 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe "#bootstrap_class_for" do
-    it "returns success when flash type is success" do
-      expect(self.bootstrap_class_for(:success)).to eq("success")
+    it "returns colour gradient for success when flash type is success" do
+      expect(self.bootstrap_class_for(:success)).to eq("linear-gradient(to right, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%)")
     end
 
-    it "returns danger when flash type is error" do
-      expect(self.bootstrap_class_for(:error)).to eq("danger")
+    it "returns colour gradient for error when flash type is error" do
+      expect(self.bootstrap_class_for(:error)).to eq("linear-gradient(to right, rgba(247,100,74,1) 0%,rgba(231,56,39,1) 100%)")
     end
 
-    it "returns warning when flash type is alert" do
-      expect(self.bootstrap_class_for(:alert)).to eq("warning")
+    it "returns colour gradient for alert when flash type is alert" do
+      expect(self.bootstrap_class_for(:alert)).to eq("linear-gradient(to right, rgba(252,236,88,1) 0%,rgba(241,218,54,1) 100%)")
     end
 
-    it "returns info when flash type is notice" do
-      expect(self.bootstrap_class_for(:notice)).to eq("info")
+    it "returns colour gradient for notice when flash type is notice" do
+      expect(self.bootstrap_class_for(:notice)).to eq("linear-gradient(to right, rgba(41,137,216,1) 0%,rgba(30,87,153,1) 100%)")
     end
 
-    it "returns info when flash type is notice" do
-      expect(self.bootstrap_class_for(:notice)).to eq("info")
-    end
-
-    it "returns the flash type if it's not found" do
-      expect(self.bootstrap_class_for(:other)).to eq("other")
+    it "returns default colour gradient when it's not found" do
+      expect(self.bootstrap_class_for(:other)).to eq("linear-gradient(to right, rgba(135,224,253,1) 0%,rgba(83,203,241,1) 40%,rgba(5,171,224,1) 100%)")
     end
   end
 end

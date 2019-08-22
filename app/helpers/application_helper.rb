@@ -9,16 +9,16 @@ module ApplicationHelper
 
   def bootstrap_class_for(flash_type)
     case flash_type.to_s
-      when "success"
-      "success"
+    when "success"
+      "linear-gradient(to right, rgba(157,213,58,1) 0%,rgba(161,213,79,1) 50%,rgba(124,188,10,1) 100%)"
     when "error"
-      "danger"
+      "linear-gradient(to right, rgba(247,100,74,1) 0%,rgba(231,56,39,1) 100%)"
     when "alert"
-      "warning"
+      "linear-gradient(to right, rgba(252,236,88,1) 0%,rgba(241,218,54,1) 100%)"
     when "notice"
-      "info"
+      "linear-gradient(to right, rgba(41,137,216,1) 0%,rgba(30,87,153,1) 100%)"
     else
-      flash_type.to_s
+      "linear-gradient(to right, rgba(135,224,253,1) 0%,rgba(83,203,241,1) 40%,rgba(5,171,224,1) 100%)"
     end
   end
 end

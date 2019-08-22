@@ -12,14 +12,15 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user = current_user
-    
-    if @post.valid?
-      @post.save
-      flash[:success] = "Post has been created successfully"
-      redirect_to @post
-    else
-      flash[:error] = "Could not create post"
-      render :new
+
+    respond_to do |format|
+      if @post.save
+        flash[:success] = "Post has been created successfully"
+        format.html { redirect_to @post }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.json { render json: { errors: @post.errors.full_messages, flash_message: "Could not create post" }, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -28,12 +29,14 @@ class PostsController < ApplicationController
   def edit;end
 
   def update
-    if @post.update(post_params)
-      flash[:success] = "Post has been updated successfully"
-      redirect_to @post
-    else
-      flash[:error] = "Could not update post"
-      render :edit
+    respond_to do |format|
+      if @post.update(post_params)
+        flash[:success] = "Post has been updated successfully"
+        format.html { redirect_to @post }
+        format.json { render :show, status: :created, location: @post }
+      else
+        format.json { render json: { errors: @post.errors.full_messages, flash_message: "Could not update post" }, status: :unprocessable_entity }
+      end
     end
   end
 
