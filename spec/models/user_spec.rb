@@ -27,4 +27,10 @@ RSpec.describe User, type: :model do
       expect(user.full_name).to eql("test testy".titleize)
     end
   end
+
+  describe "#is_admin?" do
+    it "returns false for user" do
+      expect(user.is_admin?).to be_falsey
+    end
+  end
 end
