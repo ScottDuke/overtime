@@ -34,4 +34,30 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(self.sr_only_span(root_path)).to be_nil
     end
   end
+
+  describe "#bootstrap_class_for" do
+    it "returns success when flash type is success" do
+      expect(self.bootstrap_class_for(:success)).to eq("success")
+    end
+
+    it "returns danger when flash type is error" do
+      expect(self.bootstrap_class_for(:error)).to eq("danger")
+    end
+
+    it "returns warning when flash type is alert" do
+      expect(self.bootstrap_class_for(:alert)).to eq("warning")
+    end
+
+    it "returns info when flash type is notice" do
+      expect(self.bootstrap_class_for(:notice)).to eq("info")
+    end
+
+    it "returns info when flash type is notice" do
+      expect(self.bootstrap_class_for(:notice)).to eq("info")
+    end
+
+    it "returns the flash type if it's not found" do
+      expect(self.bootstrap_class_for(:other)).to eq("other")
+    end
+  end
 end

@@ -15,9 +15,11 @@ class PostsController < ApplicationController
     
     if @post.valid?
       @post.save
-      redirect_to @post, notice: "Post has been created successfully"
+      flash[:success] = "Post has been created successfully"
+      redirect_to @post
     else
-      render :new, notice: "Could not create post"
+      flash[:error] = "Could not create post"
+      render :new
     end
   end
 
@@ -27,17 +29,21 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: "Post has been updated successfully"
+      flash[:success] = "Post has been updated successfully"
+      redirect_to @post
     else
-      render :edit, notice: "Could not update post"
+      flash[:error] = "Could not update post"
+      render :edit
     end
   end
 
   def destroy
     if @post.destroy
-      redirect_to posts_path, notice: "Post has been updated successfully"
+      flash[:success] = "Post has been successfully destroyed"
+      redirect_to posts_path
     else
-      redirect_to @post, notice: "Unable to delete post"
+      flash[:error] = "Unable to delete post"
+      redirect_to @post, warning: "Unable to delete post"
     end
   end
 

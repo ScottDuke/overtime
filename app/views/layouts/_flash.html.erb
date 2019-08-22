@@ -1,0 +1,16 @@
+<% if flash.any? %>
+  <% flash.each do |type, message| %>
+    <% class_name = bootstrap_class_for(type) %>
+    <script type="text/javascript">
+      Toastify({
+            text: "<%= message %>",
+            backgroundColor: "<%= class_name %>",
+            className: "<%= class_name %>",
+            duration: 20000,
+            gravity: "bottom",
+            position: "right",
+            close: true
+          }).showToast();
+    </script>
+  <% end %>
+<% end %>
