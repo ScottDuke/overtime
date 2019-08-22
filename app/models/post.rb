@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include StateMachines::PostsStateMachine
 
   belongs_to :user
 

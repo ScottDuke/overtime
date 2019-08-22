@@ -56,3 +56,4 @@ end
 
 gem 'devise', '~> 4.7'
 gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
+gem 'aasm'
