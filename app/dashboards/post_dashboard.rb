@@ -8,12 +8,13 @@ class PostDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo.with_options(searchable: false),
+    user: Field::BelongsTo,
     id: Field::Number.with_options(searchable: false),
     date: Field::DateTime.with_options(searchable: false),
     rationale: Field::Text.with_options(searchable: true, searchable_field: 'rationale'),
     created_at: Field::DateTime.with_options(searchable: false),
     updated_at: Field::DateTime.with_options(searchable: false),
+    state: Field::Text.with_options(searchable: true, searchable_field: 'state')
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,8 +23,8 @@ class PostDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
+  state
   user
-  id
   date
   rationale
   ].freeze
@@ -32,9 +33,10 @@ class PostDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   user
-  id
+  state
   date
   rationale
+  state
   created_at
   updated_at
   ].freeze
@@ -46,6 +48,7 @@ class PostDashboard < Administrate::BaseDashboard
   user
   date
   rationale
+  state
   ].freeze
 
   # COLLECTION_FILTERS
