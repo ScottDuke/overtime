@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:date, :rationale)
+    params.require(:post).permit(:date, :rationale, :state_event)
   end
 
   def set_post

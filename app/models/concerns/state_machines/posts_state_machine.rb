@@ -6,8 +6,20 @@ module StateMachines::PostsStateMachine
 
     aasm column: 'state' do
       state :submitted, initial: true
-      state :approved
-      state :rejected
+      state :approved, :rejected
+
+      event :accept do
+        transitions from: %i(submitted rejected), to: :approved
+      end
+
+      event :reject do
+        transitions from: %i(submitted approved), to: :rejected
+      end
+
+      event :submit do
+        transitions from: %i(approved rejected), to: :submitted
+      end
+
     end
 
   end
