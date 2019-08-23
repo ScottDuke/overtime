@@ -20,6 +20,8 @@ describe "Approval workflow" do
       user = FactoryBot.create(:user)
       login_as(user, scope: :user)
 
+      post = FactoryBot.create(:post, user: user)
+
       visit edit_post_path(post)
 
       expect(page).to have_no_content("Submit")
