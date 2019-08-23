@@ -26,9 +26,13 @@ class PostsController < ApplicationController
 
   def show;end
 
-  def edit;end
+  def edit
+    authorize @post
+  end
 
   def update
+    authorize @post
+    
     respond_to do |format|
       if @post.update(post_params)
         flash[:success] = "Post has been updated successfully"
