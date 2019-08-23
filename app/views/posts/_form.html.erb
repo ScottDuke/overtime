@@ -7,15 +7,6 @@
     <%= f.label(:rationale) %>
     <%= f.text_area :rationale, { class: "form-control" } %>
   </div>
-  <div class="form-group">
-    <%= f.label(:state_event, "Submitted") %>
-    <%= f.radio_button :state_event, "submit", checked: @post.submitted? %>
-
-    <%= f.label(:state_event, "Apprvoved") %>
-    <%= f.radio_button :state_event, "accept", checked: @post.approved? %>
-
-    <%= f.label(:state_event, "Rejected") %>
-    <%= f.radio_button :state_event, "reject", checked: @post.rejected? %>
-  </div>
+  <%= render partial: "status", locals: { f: f } %>
   <%= f.submit("Save", { class: "btn btn-primary btn-block" }) %>
 <% end %>

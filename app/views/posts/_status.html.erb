@@ -1,0 +1,12 @@
+<% if current_user.is_admin? %>
+  <div class="form-group">
+    <%= f.label(:state_event, "Submit") %>
+    <%= f.radio_button :state_event, "submit", checked: @post.submitted? %>
+
+    <%= f.label(:state_event, "Approve") %>
+    <%= f.radio_button :state_event, "accept", checked: @post.approved? %>
+
+    <%= f.label(:state_event, "Reject") %>
+    <%= f.radio_button :state_event, "reject", checked: @post.rejected? %>
+  </div>
+<% end %>
