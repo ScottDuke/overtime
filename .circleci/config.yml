@@ -54,6 +54,7 @@ jobs:
           key: overtime-yarn-{{ checksum "yarn.lock" }}
           paths:
             - ~/.cache/yarn
+      - run: RAILS_ENV=test bundle exec rails webpacker:compile
   test:
     parallelism: 3
     docker:
