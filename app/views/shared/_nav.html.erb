@@ -20,12 +20,13 @@
         
         <ul class="navbar-nav ml-md-auto">
           <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Account</a>
+            <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Account</a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "Edit Details", root_path, { class: "dropdown-item" } %>
-              <div class="dropdown-divider">
-              </div>
-               <%= link_to "Logout", destroy_user_session_path, { method: :delete, class: "dropdown-item" } %>
+              <% if current_user.is_admin? %>
+                <%= link_to "Admin Dashboard", admin_root_path, { class: "dropdown-item" } %>
+                <div class="dropdown-divider"></div>
+              <% end %>
+              <%= link_to "Logout", destroy_user_session_path, { method: :delete, class: "dropdown-item" } %>
             </div>
           </li>
         </ul>
