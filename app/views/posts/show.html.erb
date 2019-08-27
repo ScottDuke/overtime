@@ -1,2 +1,18 @@
-Date: <%= @post.date.to_s %>
-Rationale: <%= @post.rationale %>
+<div class="card">
+  <h2 class="card-header"><%= @post.rationale %></h2>
+  <div class="card-body">
+    <div>
+      <h3 class="card-title">User:</h3><span lass="card-text"><%= @post.user.full_name %></span>
+    </div>
+    <div>
+      <h3 class="card-title">Overtime amount requsted:</h3><span lass="card-text"><%= @post.overtime_request %></span>
+    </div>
+    <div>
+      <h3 class="card-title">Status:</h3><span lass="card-text"><%= @post.state %></span>
+    </div>
+  </div>
+  <div class="card-footer text-muted text-center">
+    created at: <%= @post.created_at.to_s(:long_ordinal) %> last updated at: <%= @post.updated_at.to_s(:long_ordinal) %>
+    <%= link_to "Edit", edit_post_path(@post), { class: "btn btn-primary" } if policy(@post).update? %>
+  </div>
+</div>
