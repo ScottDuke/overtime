@@ -59,3 +59,4 @@ gem 'devise', '~> 4.7'
 gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
 gem 'aasm'
 gem 'pundit', '~> 2.1'
+gem 'twilio-ruby', '~> 5.25', '>= 5.25.4'
