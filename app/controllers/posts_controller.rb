@@ -20,6 +20,7 @@ class PostsController < ApplicationController
         format.json { render :show, status: :created, location: @post }
       else
         format.json { render json: { errors: @post.errors.full_messages, flash_message: "Could not create post" }, status: :unprocessable_entity }
+        format.html { render :new }
       end
     end
   end
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
         format.json { render :show, status: :created, location: @post }
       else
         format.json { render json: { errors: @post.errors.full_messages, flash_message: "Could not update post" }, status: :unprocessable_entity }
+        format.html { render :edit }
       end
     end
   end
@@ -57,7 +59,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:date, :rationale, :state_event)
+    params.require(:post).permit(:date, :rationale, :state_event, :overtime_request)
   end
 
   def set_post
