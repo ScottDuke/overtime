@@ -3,7 +3,9 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  validates_presence_of :date, :rationale, message: "can't be blank"
+  validates_presence_of :date, :rationale, :overtime_request, message: "can't be blank"
+  validates :overtime_request, numericality: { greater_than: 0.0 }
+  # validates_numericality_of :overtime_request, greater_than: 0
 
   attr_accessor :state_event
   after_save :trigger_state_change, if: :state_event
