@@ -26,6 +26,16 @@ describe "navigate" do
     it "has a list of Posts" do
       expect(page).to have_content(/something|something\selse/)
     end
+
+    it 'does not show posts from other users' do
+      other_user = FactoryBot.create(:second_user)
+      rationale = "#{other_user.email} post"
+      post_from_other_user = FactoryBot.create(:post, user: other_user, rationale: rationale)
+
+      visit posts_path
+
+      expect(page).to_not have_content(rationale)
+    end
   end
 
   describe "create" do
