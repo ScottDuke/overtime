@@ -68,24 +68,26 @@ describe "navigate" do
     end
 
     it "can be edited" do
+      rationale_content = "UPDATED: some text"
+
       visit edit_post_path(post)
 
       fill_in "post[date]",	with: Date.today
-      fill_in "post[rationale]",	with: "UPDATED: some text"
+      fill_in "post[rationale]",	with: rationale_content
       click_on "Save"
 
-      expect(page).to have_content("UPDATED: some text")
+      expect(page).to have_content(rationale_content)
     end
 
-    # it "cannot be edited by a non authorised user" do
-    #   logout(:user)
-    #   second_user = FactoryBot.create(:second_user)
-    #   login_as(second_user, scope: :user)
+    it "cannot be edited by a non authorised user" do
+      logout(:user)
+      second_user = FactoryBot.create(:second_user)
+      login_as(second_user, scope: :user)
 
-    #   visit edit_post_path(post)
+      visit edit_post_path(post)
 
-    #   expect(current_page).to eq(root_path)
-    # end
+      expect(current_path).to eq(root_path)
+    end
   end
 
   describe "new" do
