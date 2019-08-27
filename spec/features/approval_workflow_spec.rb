@@ -8,7 +8,8 @@ describe "Approval workflow" do
   end
 
   describe "edit" do
-    let!(:post) { FactoryBot.create(:post) }
+    let(:user) { FactoryBot.create(:user) }
+    let!(:post) { FactoryBot.create(:post, user: user) }
 
     before do
       visit edit_post_path(post)
@@ -73,6 +74,15 @@ describe "Approval workflow" do
         post.reload
 
         expect(post.rejected?).to be_truthy  
+      end
+
+      it "should not be editable" do
+        logout(:user)
+        login_as(user, scope: :user)
+
+         visit edit_post_path(post)
+
+        expect(current_path).to eql(root_path)
       end
     end
 
