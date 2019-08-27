@@ -2,12 +2,27 @@
 @import './bootstrap_custom.scss';
 @import "toastify-js/src/toastify.css";
 
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+
 
 body {
-    padding-top: 100px;
+  padding-top: 100px;
     #app-errors {
-        display: none;
-        width: 100%;
-        padding-top: 15px;
+      display: none;
+      width: 100%;
+      padding-top: 15px;
+    }
+
+    .index-icons {
+      font-size: 1.5em;
+      &:hover {
+        filter: brightness(85%);
+      }
+    }
+
+    .fa-trash-alt {
+      color: tomato;
     }
 }

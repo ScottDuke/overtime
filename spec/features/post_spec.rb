@@ -117,7 +117,7 @@ describe "navigate" do
     it "has a link to delete" do
       visit posts_path
 
-      expect(page).to have_link("Delete", href: post_path(post))
+      expect(page).to have_link("", href: post_path(post))
     end
 
     it "can be deleted" do
