@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates_presence_of :first_name, :last_name, message: "can't be blank"
+  validates_presence_of :first_name, :last_name, :phone_number, message: "can't be blank"
 
   def full_name
     "#{first_name} #{last_name}".titleize

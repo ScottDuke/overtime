@@ -11,6 +11,7 @@ class UserDashboard < Administrate::BaseDashboard
     posts: Field::HasMany.with_options(searchable: false),
     id: Field::Number.with_options(searchable: false),
     email: Field::String.with_options(searchable: true, searchable_field: 'email'),
+    phone_number: Field::String.with_options(searchable: true, searchable_field: 'phone_number'),
     password: Field::String.with_options(searchable: false),
     password_confirmation: Field::String.with_options(searchable: false),
     reset_password_token: Field::String.with_options(searchable: false),
@@ -46,6 +47,7 @@ class UserDashboard < Administrate::BaseDashboard
   posts
   id
   email
+  phone_number
   reset_password_token
   reset_password_sent_at
   remember_created_at
@@ -66,6 +68,7 @@ class UserDashboard < Administrate::BaseDashboard
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
   email
+  phone_number
   password
   password_confirmation
   first_name

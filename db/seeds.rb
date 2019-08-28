@@ -1,10 +1,20 @@
 puts "creating a user"
 
-@user = User.create(email: "test@example.com", password: "password", password_confirmation: "password", first_name: "Testy", last_name: "Tester")
+@user = User.create(email: "test@example.com",
+                    password: "password",
+                    password_confirmation: "password",
+                    first_name: "Testy",
+                    last_name: "Tester",
+                    phone_number: Rails.application.credentials.twilio[:phone_number])
 
 puts "Created user"
 
-AdminUser.create(email: "admin@example.com", password: "password", password_confirmation: "password", first_name: "Admin", last_name: "Tester")
+AdminUser.create(email: "admin@example.com",
+                 password: "password",
+                 password_confirmation: "password",
+                 first_name: "Admin",
+                 last_name: "Tester",
+                 phone_number: Rails.application.credentials.twilio[:phone_number])
 
 puts "Created admin user"
 

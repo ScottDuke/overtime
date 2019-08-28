@@ -18,6 +18,11 @@ RSpec.describe User, type: :model do
         user.last_name = nil
         expect(user).to_not be_valid
       end
+
+      it "phone_number is empty" do
+        user.phone_number = nil
+        expect(user).to_not be_valid
+      end
     end
     
   end

@@ -10,7 +10,7 @@ require 'capybara/rails'
 require 'webmock/rspec'
 
 include Warden::Test::Helpers
-include WebMock
+include WebMock::API
 
 Warden.test_mode!
 WebMock.disable_net_connect!(allow_localhost: true)
