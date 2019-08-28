@@ -53,6 +53,7 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rspec_junit_formatter', '~> 0.4.1'
+  gem 'webmock', '~> 3.7'
 end
 
 gem 'devise', '~> 4.7'

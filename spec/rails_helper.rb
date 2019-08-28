@@ -4,12 +4,16 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 # Prevent database truncation if the environment is production
 abort("The Rails environment is running in production mode!") if Rails.env.production?
+
 require 'rspec/rails'
 require 'capybara/rails'
-# require 'support/factory_girl'
+require 'webmock/rspec'
 
 include Warden::Test::Helpers
+include WebMock
+
 Warden.test_mode!
+WebMock.disable_net_connect!(allow_localhost: true)
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
