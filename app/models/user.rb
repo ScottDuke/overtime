@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates_presence_of :first_name, :last_name, :phone_number, message: "can't be blank"
+  validates :phone_number, phone: { possible: true, types: [:voip, :mobile], countries: %i(gb us) }
 
   def full_name
     "#{first_name} #{last_name}".titleize

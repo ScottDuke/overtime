@@ -6,8 +6,10 @@ RSpec.describe User, type: :model do
   describe "creation" do
     it "creates a user" do
       expect(user).to be_valid  
-    end
+    end    
+  end
 
+  describe "validations" do
     context "is not valid when" do
       it "first_name is empty" do
         user.first_name = nil
@@ -23,8 +25,17 @@ RSpec.describe User, type: :model do
         user.phone_number = nil
         expect(user).to_not be_valid
       end
+
+      it "with a random phone number" do
+        user.phone_number = "12412415192u518921289512"
+        expect(user).to_not be_valid
+      end
+
+      it "with a random phone number with characters" do
+        user.phone_number = "qwfqwfq1241fasqwfa"
+        expect(user).to_not be_valid
+      end
     end
-    
   end
 
   describe "#full_name" do
