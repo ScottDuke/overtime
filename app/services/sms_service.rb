@@ -2,25 +2,28 @@ class SmsService
 
   TWILIO_ACCOUNT_SID = Rails.application.credentials.twilio[:account_sid]
   TWILIO_AUTH_TOKEN = Rails.application.credentials.twilio[:auth_token]
-  
+  TWILIO_NUMBER = Rails.application.credentials.twilio[:phone_number]
+
   def initialize(params)
     @phone_number = params.fetch(:phone_number, nil)
     @message = params.fetch(:message, nil)
   end
 
-  def send_sms(number, message)
-    puts "sending #{message} to #{message}"
+  def send_sms
+    body = "Hi, #{message}"
+    message = client.messages.create(
+      from: TWILIO_NUMBER,
+      to: phone_number,
+      body: body
+    )
   end
 
   def valid?
     begin
-      puts phone_number
-      response = lookup_client.lookups.phone_numbers(phone_number).fetch
-      puts response
+      response = client.lookups.phone_numbers(phone_number).fetch
       response.phone_number
       true
     rescue => e
-      puts e.inspect
       if e.try(:code) == 20404
         return false
       else
@@ -33,7 +36,7 @@ class SmsService
 
   attr_reader :phone_number, :message
 
-  def lookup_client
+  def client
     Twilio::REST::Client.new(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
   end
 
