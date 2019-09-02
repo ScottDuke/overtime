@@ -13,8 +13,6 @@ class Post < ApplicationRecord
   private
 
   def trigger_state_change
-    can_send = send("may_#{state_event}?")
     send("#{state_event}!") if send("may_#{state_event}?")
   end
-  
 end

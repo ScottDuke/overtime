@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :posts
   has_many :audit_logs
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -14,8 +14,7 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}".titleize
   end
 
-  def is_admin?
+  def admin?
     false
   end
-  
 end

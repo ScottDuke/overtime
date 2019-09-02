@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Approval workflow" do
   let!(:admin_user) { FactoryBot.create(:admin_user) }
-  
+
   before do
     login_as(admin_user, scope: :user)
   end
@@ -40,7 +40,7 @@ describe "Approval workflow" do
 
         post.reload
 
-        expect(post.approved?).to be_truthy  
+        expect(post.approved?).to be_truthy
       end
 
       it "sets the post to a rejected state" do
@@ -49,7 +49,7 @@ describe "Approval workflow" do
 
         post.reload
 
-        expect(post.rejected?).to be_truthy  
+        expect(post.rejected?).to be_truthy
       end
     end
 
@@ -64,7 +64,7 @@ describe "Approval workflow" do
 
         post.reload
 
-        expect(post.submitted?).to be_truthy  
+        expect(post.submitted?).to be_truthy
       end
 
       it "sets the post to a rejected state" do
@@ -73,14 +73,14 @@ describe "Approval workflow" do
 
         post.reload
 
-        expect(post.rejected?).to be_truthy  
+        expect(post.rejected?).to be_truthy
       end
 
       it "should not be editable" do
         logout(:user)
         login_as(user, scope: :user)
 
-         visit edit_post_path(post)
+        visit edit_post_path(post)
 
         expect(current_path).to eql(root_path)
       end
@@ -97,7 +97,7 @@ describe "Approval workflow" do
 
         post.reload
 
-        expect(post.submitted?).to be_truthy  
+        expect(post.submitted?).to be_truthy
       end
 
       it "sets the post to a rejected state" do
@@ -106,9 +106,8 @@ describe "Approval workflow" do
 
         post.reload
 
-        expect(post.approved?).to be_truthy  
+        expect(post.approved?).to be_truthy
       end
     end
-    
   end
 end

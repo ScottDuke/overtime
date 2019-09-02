@@ -20,7 +20,7 @@ puts "Created admin user"
 
 puts "creating 100 posts"
 
-100.times do |post|
+100.times do
   overtime_request = rand(1.0...12.0).round(1)
   Post.create!(date: Date.today, rationale: "#{post} content", user: user, overtime_request: overtime_request)
 end
@@ -29,7 +29,7 @@ puts "finished creating 100 posts"
 
 puts "creating 100 audit logs"
 
-100.times do |post|
+100.times do
   AuditLog.create!(user: user, start_date: 1.week.ago)
 end
 

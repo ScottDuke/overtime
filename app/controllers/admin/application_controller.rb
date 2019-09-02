@@ -10,7 +10,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      unless current_user.is_admin?
+      unless current_user.admin?
         flash[:alert] = "You are not authorised to access this page"
         redirect_to root_path
       end

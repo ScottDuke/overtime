@@ -5,8 +5,8 @@ RSpec.describe User, type: :model do
 
   describe "creation" do
     it "creates a user" do
-      expect(user).to be_valid  
-    end    
+      expect(user).to be_valid
+    end
   end
 
   describe "validations" do
@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
         expect(user).to_not be_valid
       end
 
-       it "last_name is empty" do
+      it "last_name is empty" do
         user.last_name = nil
         expect(user).to_not be_valid
       end
@@ -44,9 +44,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#is_admin?" do
+  describe "#admin?" do
     it "returns false for user" do
-      expect(user.is_admin?).to be_falsey
+      expect(user.admin?).to be_falsey
     end
   end
 end

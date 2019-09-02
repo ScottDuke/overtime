@@ -19,8 +19,6 @@ module StateMachines::PostsStateMachine
       event :submit do
         transitions from: %i(approved rejected), to: :submitted
       end
-
     end
-
   end
 end

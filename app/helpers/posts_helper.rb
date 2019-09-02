@@ -11,5 +11,4 @@ module PostsHelper
 
     content_tag(:span, state.titleize, class: "badge badge-#{badge_class}")
   end
-  
 end

@@ -16,13 +16,13 @@ describe "navigate" do
     end
 
     it "loads the page successfully" do
-      expect(page.status_code).to eql(200)  
+      expect(page.status_code).to eql(200)
     end
 
     it "has a title of Posts" do
       expect(page).to have_content("Posts")
     end
-    
+
     it "has a list of Posts" do
       expect(page).to have_content(/something|something\selse/)
     end
@@ -30,7 +30,7 @@ describe "navigate" do
     it 'does not show posts from other users' do
       other_user = FactoryBot.create(:second_user)
       rationale = "#{other_user.email} post"
-      post_from_other_user = FactoryBot.create(:post, user: other_user, rationale: rationale)
+      FactoryBot.create(:post, user: other_user, rationale: rationale)
 
       visit posts_path
 
@@ -47,19 +47,19 @@ describe "navigate" do
       expect(page.status_code).to eql(200)
     end
 
-    it "creates a post from the new form page" do      
-      fill_in "post[date]",	with: Date.today
-      fill_in "post[rationale]",	with: "some text"
-      fill_in "post[overtime_request]",	with: 2.5
+    it "creates a post from the new form page" do
+      fill_in "post[date]", with: Date.today
+      fill_in "post[rationale]", with: "some text"
+      fill_in "post[overtime_request]", with: 2.5
 
       expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it "will have a user associated" do
       expected_rationale_value = "some text"
-      fill_in "post[date]",	with: Date.today
-      fill_in "post[rationale]",	with: expected_rationale_value
-      fill_in "post[overtime_request]",	with: 2.5
+      fill_in "post[date]", with: Date.today
+      fill_in "post[rationale]", with: expected_rationale_value
+      fill_in "post[overtime_request]", with: 2.5
       click_on "Save"
 
       actual_rationale_value = User.last.posts.last.rationale
@@ -73,7 +73,7 @@ describe "navigate" do
     it "can be reached by clicking edit on index page" do
       visit posts_path
 
-      click_link "edit_#{post.id}"  
+      click_link "edit_#{post.id}"
 
       expect(page.status_code).to eq(200)
     end
@@ -83,8 +83,8 @@ describe "navigate" do
 
       visit edit_post_path(post)
 
-      fill_in "post[date]",	with: Date.today
-      fill_in "post[rationale]",	with: rationale_content
+      fill_in "post[date]", with: Date.today
+      fill_in "post[rationale]", with: rationale_content
       click_on "Save"
 
       expect(page).to have_content(rationale_content)
@@ -128,5 +128,4 @@ describe "navigate" do
       expect(page.status_code).to eq(200)
     end
   end
-  
 end

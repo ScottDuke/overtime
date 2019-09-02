@@ -9,9 +9,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "#is_admin?" do
+  describe "#admin?" do
     it "returns false for user" do
-      expect(user.is_admin?).to be_truthy
+      expect(user.admin?).to be_truthy
     end
   end
 end

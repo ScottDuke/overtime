@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def index
     @posts = current_user.posts
   end
-  
+
   def new
     @post = Post.new
   end
@@ -19,13 +19,20 @@ class PostsController < ApplicationController
         format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
-        format.json { render json: { errors: @post.errors.full_messages, flash_message: "Could not create post" }, status: :unprocessable_entity }
+        format.json do
+          render json: {
+            errors: @post.errors.full_messages,
+            flash_message: "Could not create post",
+          },
+          status: :unprocessable_entity
+        end
+
         format.html { render :new }
       end
     end
   end
 
-  def show;end
+  def show; end
 
   def edit
     authorize @post
@@ -33,14 +40,20 @@ class PostsController < ApplicationController
 
   def update
     authorize @post
-    
+
     respond_to do |format|
       if @post.update(post_params)
         flash[:success] = "Post has been updated successfully"
         format.html { redirect_to @post }
         format.json { render :show, status: :created, location: @post }
       else
-        format.json { render json: { errors: @post.errors.full_messages, flash_message: "Could not update post" }, status: :unprocessable_entity }
+        format.json do
+          render json: {
+            errors: @post.errors.full_messages,
+            flash_message: "Could not update post",
+          },
+          status: :unprocessable_entity
+        end
         format.html { render :edit }
       end
     end
@@ -57,7 +70,7 @@ class PostsController < ApplicationController
   end
 
   private
-  
+
   def post_params
     params.require(:post).permit(:date, :rationale, :state_event, :overtime_request)
   end

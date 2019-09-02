@@ -1,5 +1,5 @@
 class AdminUser < User
-  def is_admin?
+  def admin?
     true
   end
 end

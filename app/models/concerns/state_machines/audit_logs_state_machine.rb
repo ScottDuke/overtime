@@ -7,6 +7,5 @@ module StateMachines::AuditLogsStateMachine
     aasm column: 'state' do
       state :pending, initial: true
     end
-
   end
 end

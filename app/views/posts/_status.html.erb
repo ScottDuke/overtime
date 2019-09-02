@@ -1,4 +1,4 @@
-<% if current_user.is_admin? %>
+<% if current_user.admin? %>
   <div class="form-group">
     <%= f.label(:state_event, "Submit") %>
     <%= f.radio_button :state_event, "submit", checked: @post.submitted? %>

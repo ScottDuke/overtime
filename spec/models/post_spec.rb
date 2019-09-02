@@ -5,8 +5,8 @@ RSpec.describe Post, type: :model do
     let(:user) { FactoryBot.create(:user) }
     let(:post) { FactoryBot.create(:post) }
 
-    it "creates a post" do  
-      expect(post).to be_valid  
+    it "creates a post" do
+      expect(post).to be_valid
     end
     
     context "is not valid when" do
@@ -15,7 +15,7 @@ RSpec.describe Post, type: :model do
         expect(post).to_not be_valid
       end
 
-       it "rationale is empty" do
+      it "rationale is empty" do
         post.rationale = nil
         expect(post).to_not be_valid
       end
