@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module StateMachines::AuditLogsStateMachine
   extend ActiveSupport::Concern
 

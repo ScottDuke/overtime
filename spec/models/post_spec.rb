@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
@@ -8,7 +10,7 @@ RSpec.describe Post, type: :model do
     it "creates a post" do
       expect(post).to be_valid
     end
-    
+
     context "is not valid when" do
       it "date is empty" do
         post.date = nil

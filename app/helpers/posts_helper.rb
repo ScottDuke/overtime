@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PostsHelper
   def state_badge(state)
     badge_class = case state

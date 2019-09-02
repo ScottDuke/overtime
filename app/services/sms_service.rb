@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class SmsService
   TWILIO_ACCOUNT_SID = Rails.application.credentials.twilio[:account_sid]
   TWILIO_AUTH_TOKEN = Rails.application.credentials.twilio[:auth_token]

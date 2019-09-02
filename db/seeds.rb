@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 puts "creating a user"
 
 user = User.create(email: "test@example.com",
