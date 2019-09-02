@@ -31,15 +31,7 @@ jobs:
       - run:
           name: Wait for PG
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
-
-      - run:
-          name: Wait for Redis
-          command: |
-            dockerize -wait tcp://localhost:6379 -timeout 1m
-      - run:
-          name: Wait for ElasticSearch
-          command: |
-            dockerize -wait tcp://localhost:9200 -timeout 1m
+          
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -64,9 +56,9 @@ jobs:
       - run: bundle exec rake db:create
       - run: bundle exec rake db:schema:load
 
-      # - run:
-      #     name: Rubocop
-      #     command: bundle exec rubocop
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
 
       - run:
           name: Rails Test
