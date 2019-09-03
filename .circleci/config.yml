@@ -57,6 +57,10 @@ jobs:
       - run: bundle exec rake db:schema:load
 
       - run:
+          name: Brakeman
+          command: bundle exec brakeman --exit-on-warn --quiet -f plain
+
+      - run:
           name: Rubocop
           command: bundle exec rubocop
 
