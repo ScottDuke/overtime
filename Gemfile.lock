@@ -84,6 +84,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.4)
       msgpack (~> 1.0)
+    brakeman (4.6.1)
     builder (3.2.3)
     byebug (11.0.1)
     capybara (3.28.0)
@@ -332,6 +333,7 @@ DEPENDENCIES
   aasm
   administrate!
   bootsnap (>= 1.4.2)
+  brakeman
   byebug
   capybara (>= 2.15)
   database_cleaner
