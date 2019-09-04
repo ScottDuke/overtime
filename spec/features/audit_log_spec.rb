@@ -13,7 +13,7 @@ describe "Audit log" do
       visit audit_logs_path
     end
 
-    it "has a index page that can be reached" do  
+    it "has a index page that can be reached" do
       expect(page.status_code).to eql(200)
     end
 
@@ -24,7 +24,6 @@ describe "Audit log" do
     it "cannot be accessed by non admin users" do
       logout(:user)
       login_as(user, scope: :user)
-
 
       visit audit_logs_path
 
