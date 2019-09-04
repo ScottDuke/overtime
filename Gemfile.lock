@@ -348,6 +348,7 @@ DEPENDENCIES
   factory_bot_rails
   foreman
   jbuilder (~> 2.7)
+  kaminari
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
   phonelib (~> 0.6.37)
