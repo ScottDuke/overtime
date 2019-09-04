@@ -1,10 +1,10 @@
 <% if flash.any? %>
   <% flash.each do |type, message| %>
-    <% class_name = bootstrap_class_for(type) %>
+    <% background_colour = background_colour_for(type) %>
     <script type="text/javascript">
       Toastify({
             text: "<%= message %>",
-            backgroundColor: "<%= class_name %>",
+            backgroundColor: "<%= background_colour %>",
             className: "",
             duration: 20000,
             gravity: "bottom",

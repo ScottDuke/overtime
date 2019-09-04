@@ -13,17 +13,4 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe PostsHelper, type: :helper do
-  describe "#state_badge" do
-    it "returns a primary badge when state is submitted" do
-      expect(state_badge("submitted")).to eq("<span class=\"badge badge-primary\">Submitted</span>")
-    end
-
-    it "returns a danger badge when state is rejected" do
-      expect(state_badge("rejected")).to eq("<span class=\"badge badge-danger\">Rejected</span>")
-    end
-
-    it "returns a success badge when state is approved" do
-      expect(state_badge("approved")).to eq("<span class=\"badge badge-success\">Approved</span>")
-    end
-  end
 end
