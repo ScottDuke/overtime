@@ -58,6 +58,7 @@ group :test do
   gem 'webdrivers'
   gem 'rspec_junit_formatter', '~> 0.4.1'
   gem 'webmock', '~> 3.7'
+  gem 'timecop', '~> 0.9.1'
 end
 
 gem 'devise', '~> 4.7'
