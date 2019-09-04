@@ -5,6 +5,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = current_user.posts.page(params[:page])
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def new
