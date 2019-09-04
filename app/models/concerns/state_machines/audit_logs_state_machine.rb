@@ -8,6 +8,11 @@ module StateMachines::AuditLogsStateMachine
 
     aasm column: 'state' do
       state :pending, initial: true
+      state :confirmed
+
+      event :confirm do
+        transitions from: :pending, to: :confirmed
+      end
     end
   end
 end
