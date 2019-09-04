@@ -10,7 +10,7 @@ RSpec.describe AuditLog, type: :model do
     it "creates a aduit log" do
       expect(audit_log).to be_valid
     end
-    
+
     context "is not valid when" do
       it "user is not present" do
         audit_log.user = nil
