@@ -1,19 +1,8 @@
 <div class="container">
   <div class="pending-homepage row">
-    <div class="homepage-block col-md-2">
-      pending-overtime-approvals
-    </div>
-    <div class="homepage-block col-md-2">
-      pending-overtime-approvals
-    </div>
-    <div class="homepage-block col-md-2">
-      pending-overtime-approvals
-    </div>
-    <div class="homepage-block col-md-2">
-      pending-overtime-approvals
-    </div>
+    <h2 class="col-md-12">Items Pending Approval</h2>
+    <%= render partial: "pending_approval", locals: { pending_approvals: @pending_approvals } %>
   </div>
-
 
   <div class="pending-homepage row">
     pending-submission

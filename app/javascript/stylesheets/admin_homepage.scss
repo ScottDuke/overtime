@@ -8,8 +8,11 @@
   padding: 20px;
   .homepage-block {
     background-color: #d1d1cb;
-    margin: 15px;
+    margin: 0 40px 10px 40px;
     padding: 15px;
+    .pending-details {
+      font-weight: 900;
+    }
   }
 }
 
