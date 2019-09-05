@@ -6,15 +6,4 @@
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 20px;
-  .homepage-block {
-    background-color: #d1d1cb;
-    margin: 0 40px 10px 40px;
-    padding: 15px;
-    &:hover {
-      filter: brightness(90%);
-    }
-    .pending-details {
-      font-weight: 900;
-    }
-  }
 }

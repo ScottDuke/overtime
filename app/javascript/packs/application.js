@@ -13,6 +13,7 @@ import '../stylesheets/application'
 import './bootstrap_custom.js'
 import Toastify from 'toastify-js'
 import './ajax_error.js'
+import './card_hover.js'
 
 window.Toastify = Toastify;
 
