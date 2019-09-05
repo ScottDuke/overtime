@@ -35,5 +35,4 @@ AuditLog.create!(user: user, start_date: 6.days.ago)
 AuditLog.create!(user: user, start_date: 13.days.ago)
 AuditLog.create!(user: user, start_date: 20.days.ago)
 
-
 puts "finished creating audit logs"
