@@ -1,0 +1,21 @@
+.pending-homepage {
+  background-color: #f2f2f0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  .homepage-block {
+    background-color: #d1d1cb;
+    margin: 15px;
+    padding: 15px;
+  }
+}
+
+.pending-submission {
+  background-color: red;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
