@@ -1,12 +1,20 @@
-<div class="container-fluid">
-  <div class="pending-homepage row">
-    <h2 class="col-md-12">Items Pending Approval</h2>
-    <%= render partial: "pending_approval", locals: { pending_approvals: @pending_approvals } %>
+<div class="jumbotron col-md-12">
+  <div class="container-fluid">
+    <h2 class="display-4">Items Pending Approval</h2>
+    <hr class="my-4">
+    <div class="row">      
+      <%= render partial: "pending_approval", locals: { pending_approvals: @pending_approvals } %>
+    </div>
   </div>
+</div>
 
-  <div class="pending-homepage row">
-    <h2 class="col-md-12">Confirmation Log</h2>
-    <%= render partial: "confirmation_log", locals: { recent_audit_items: @recent_audit_items } %>
-    <%= link_to("View All Items", audit_logs_path, class: "btn btn-primary btn-block") %>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container-fluid">
+    <h2 class="display-4">Confirmation Log</h2>
+    <hr class="my-4">
+    <div class="row">  
+      <%= render partial: "confirmation_log", locals: { recent_audit_items: @recent_audit_items } %>
+    </div>
+    <%= link_to("View All Items", audit_logs_path, class: "btn btn-primary") %>
   </div>
 </div>
