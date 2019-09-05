@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, only: %w(show edit update destroy)
+  before_action :set_post, only: %w(show edit update destroy approve)
 
   def index
     @posts = current_user.posts.page(params[:page])
@@ -73,6 +73,14 @@ class PostsController < ApplicationController
       flash[:error] = "Unable to delete post"
       redirect_to @post, warning: "Unable to delete post"
     end
+  end
+
+  def approve
+    authorize @post
+
+    @post.accept!
+    flash[:success] = "Post has been approved"
+    redirect_to root_path
   end
 
   private

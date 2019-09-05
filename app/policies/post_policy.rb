@@ -6,6 +6,10 @@ class PostPolicy < ApplicationPolicy
     user_or_admin && !record.approved?
   end
 
+  def approve?
+    user.admin?
+  end
+
   private
 
   def user_or_admin
