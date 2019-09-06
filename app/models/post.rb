@@ -11,10 +11,16 @@ class Post < ApplicationRecord
 
   attr_accessor :state_event
   after_save :trigger_state_change, if: :state_event
+  after_save :update_audit_log
 
   private
 
   def trigger_state_change
     send("#{state_event}!") if send("may_#{state_event}?")
+  end
+
+  def update_audit_log
+    audit_log = AuditLog.find_by(user_id: self.user_id, start_date: (self.date - 7.days..self.date))
+    audit_log.confirm! if audit_log
   end
 end
