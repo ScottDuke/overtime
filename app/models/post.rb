@@ -20,7 +20,7 @@ class Post < ApplicationRecord
   end
 
   def update_audit_log
-    audit_log = AuditLog.find_by(user_id: self.user_id, start_date: (self.date - 7.days..self.date))
-    audit_log.confirm! if audit_log
+    audit_log = AuditLog.pending.find_by(user_id: user_id, start_date: (date - 7.days..date))
+    audit_log&.confirm!
   end
 end
