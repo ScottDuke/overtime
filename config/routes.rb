@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :audit_logs, except: %i(new edit destroy)
+  resources :audit_logs, except: %i(new edit destroy) do
+    member do
+      get :confirm
+    end
+  end
 
   devise_for :users, skip: %i(registrations)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
