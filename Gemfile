@@ -37,7 +37,7 @@ group :development, :test do
   gem 'capybara', '>= 2.15'
   gem 'database_cleaner'
   gem 'factory_bot_rails'
-  gem 'bundle-audit'
+  gem 'bundle-audit', require: false
 end
 
 group :development do
