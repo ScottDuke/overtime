@@ -6,11 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.0.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
+gem 'puma', '~> 4.3.3'
 # Use SCSS for stylesheets
 gem 'sassc-rails'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -49,7 +49,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'foreman'
   gem 'rubocop', '~> 0.74.0'
-  gem 'brakeman'
+  gem 'brakeman', '~> 4.7.1'
 end
 
 group :test do
@@ -61,7 +61,7 @@ group :test do
   gem 'timecop', '~> 0.9.1'
 end
 
-gem 'devise', '~> 4.7'
+gem 'devise', '~> 4.7.1'
 gem "administrate", git: "https://github.com/thoughtbot/administrate.git"
 gem 'aasm'
 gem 'pundit', '~> 2.1'
