@@ -7,10 +7,15 @@ class AuditLog < ApplicationRecord
   validates_presence_of :start_date, message: "can't be blank"
 
   before_validation :set_defaults
+  before_update :set_end_date, if: :confirmed?
 
   private
 
   def set_defaults
     self.start_date ||= 6.days.ago
+  end
+
+  def set_end_date
+    self.end_date  = Date.today
   end
 end
