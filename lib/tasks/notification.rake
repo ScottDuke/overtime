@@ -6,15 +6,14 @@ namespace :notification do
     return unless Time.now.sunday?
     employees = Employee.all
 
-    # TODO Update user message and urls.
+    # TODO: Update user message and urls.
 
     APP_URL = Rails.env.production? ? "https://sd-overtime-app.herokuapp.com/" : "localhost:4000"
     message = "Please login to the overtime dashboard to request overtime or confirm your hours last week #{APP_URL}"
 
     employees.each do |employee|
       AuditLog.create!(user: employee)
-      SmsService.new({ phone_number: employee.phone_number,
-                        message: message }).send_sms
+      SmsService.new(phone_number: employee.phone_number, message: message).send_sms
     end
   end
 
