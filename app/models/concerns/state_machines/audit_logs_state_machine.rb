@@ -13,6 +13,10 @@ module StateMachines::AuditLogsStateMachine
       event :confirm do
         transitions from: :pending, to: :confirmed
       end
+
+      event :pending do
+        transitions from: :confirmed, to: :pending
+      end
     end
   end
 end

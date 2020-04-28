@@ -16,6 +16,6 @@ class AuditLog < ApplicationRecord
   end
 
   def set_end_date
-    self.end_date  = Date.today
+    self.end_date = Date.today
   end
 end

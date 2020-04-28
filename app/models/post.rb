@@ -11,7 +11,8 @@ class Post < ApplicationRecord
 
   attr_accessor :state_event
   after_save :trigger_state_change, if: :state_event
-  after_save :update_audit_log
+  after_save :confirm_audit_log, if: :submitted?
+  after_save :unconfirm_audit_log, if: :rejected?
 
   private
 
@@ -19,8 +20,13 @@ class Post < ApplicationRecord
     send("#{state_event}!") if send("may_#{state_event}?")
   end
 
-  def update_audit_log
+  def confirm_audit_log
     audit_log = AuditLog.pending.find_by(user_id: user_id, start_date: (date - 7.days..date))
     audit_log&.confirm!
+  end
+
+  def unconfirm_audit_log
+    audit_log = AuditLog.confirmed.find_by(user_id: user_id, start_date: (date - 7.days..date))
+    audit_log&.pending!
   end
 end
