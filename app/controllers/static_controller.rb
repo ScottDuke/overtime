@@ -17,6 +17,6 @@ class StaticController < ApplicationController
   end
 
   def set_user_homepage_values
-    @pending_audit_confirmations = current_user.audit_logs.pending
+    @pending_audit_confirmations = current_user.audit_logs.pending.by_desc_start_date
   end
 end
