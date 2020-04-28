@@ -1,0 +1,6 @@
+<li class="nav-item <%= active?(posts_path) %>">
+  <%= link_to "<i class='fas fa-user-clock'></i> Entries #{sr_only_span(posts_path)}".html_safe, posts_path, { class: "nav-link" } %>
+</li>
+<li class="nav-item <%= active?(new_post_path) %>">
+  <%= link_to "<i class='fas fa-calendar-plus'></i> Request Overtime #{sr_only_span(posts_path)}".html_safe, new_post_path, { id: "new-post-from-nav", class: "nav-link" } %>
+</li>

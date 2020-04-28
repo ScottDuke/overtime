@@ -10,7 +10,7 @@ describe "Approval workflow" do
   end
 
   describe "edit" do
-    let(:user) { FactoryBot.create(:user) }
+    let(:user) { FactoryBot.create(:employee) }
     let!(:post) { FactoryBot.create(:post, user: user) }
 
     before do
@@ -20,7 +20,7 @@ describe "Approval workflow" do
     it "cannot be edited by a non admin" do
       logout(:user)
 
-      user = FactoryBot.create(:user)
+      user = FactoryBot.create(:employee)
       login_as(user, scope: :user)
 
       post = FactoryBot.create(:post, user: user)

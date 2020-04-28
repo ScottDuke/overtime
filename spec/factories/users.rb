@@ -14,13 +14,22 @@ FactoryBot.define do
     phone_number { "01159016500" }
   end
 
-  factory :second_user, class: "User" do
+  factory :second_employee, class: "Employee" do
     first_name { "Sam" }
     last_name  { "Testy" }
     email { generate :email }
     password { "password" }
     password_confirmation { "password" }
     phone_number { "01167156869" }
+  end
+
+  factory :employee, class: "Employee" do
+    first_name { "test" }
+    last_name  { "employee" }
+    email { generate :email }
+    password { "password" }
+    password_confirmation { "password" }
+    phone_number { "01159016500" }
   end
 
   factory :admin_user, class: "AdminUser" do

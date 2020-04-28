@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe "Audit log" do
-  let!(:user) { FactoryBot.create(:user) }
+  let!(:user) { FactoryBot.create(:employee) }
   let!(:audit_log) { FactoryBot.create(:audit_log, user: user) }
   let!(:admin_user) { FactoryBot.create(:admin_user) }
 
@@ -22,7 +22,7 @@ describe "Audit log" do
     end
 
     it "cannot be accessed by non admin users" do
-      logout(:user)
+      logout(:employee)
       login_as(user, scope: :user)
 
       visit audit_logs_path

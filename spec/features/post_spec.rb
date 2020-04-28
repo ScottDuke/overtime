@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 describe "navigate" do
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { FactoryBot.create(:employee) }
 
   before do
     login_as(user, scope: :user)
@@ -30,7 +30,7 @@ describe "navigate" do
     end
 
     it 'does not show posts from other users' do
-      other_user = FactoryBot.create(:second_user)
+      other_user = FactoryBot.create(:second_employee)
       rationale = "#{other_user.email} post"
       FactoryBot.create(:post, user: other_user, rationale: rationale)
 
@@ -94,7 +94,7 @@ describe "navigate" do
 
     it "cannot be edited by a non authorised user" do
       logout(:user)
-      second_user = FactoryBot.create(:second_user)
+      second_user = FactoryBot.create(:second_employee)
       login_as(second_user, scope: :user)
 
       visit edit_post_path(post)

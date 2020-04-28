@@ -9,7 +9,7 @@ describe "admin dashboard" do
   end
 
   it "cannot be reached by a non admin user" do
-    user = FactoryBot.create(:user)
+    user = FactoryBot.create(:employee)
     login_as(user, scope: :user)
 
     visit admin_root_path

@@ -23,7 +23,7 @@ describe "Homepage" do
   end
 
   context "when logged in as a user" do
-    let!(:user) { FactoryBot.create(:user) }
+    let!(:user) { FactoryBot.create(:employee) }
     let!(:audit_log) { FactoryBot.create(:audit_log, user: user, state: "pending") }
 
     before do
