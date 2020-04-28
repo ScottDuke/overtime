@@ -8,14 +8,14 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="navbar-nav">
           <li class="nav-item <%= active?(root_path) %>">
-            <%= link_to "Home #{sr_only_span(root_path)}".html_safe, root_path, { class: "nav-link" } %>
+            <%= link_to "<i class='fas fa-home'></i> Home #{sr_only_span(root_path)}".html_safe, root_path, { class: "nav-link", alt: "Home" } %>
           </li>
           <li class="nav-item <%= active?(posts_path) %>">
-            <%= link_to "Time Entries #{sr_only_span(posts_path)}".html_safe, posts_path, { class: "nav-link" } %>
+            <%= link_to "<i class='fas fa-user-clock'></i> Entries #{sr_only_span(posts_path)}".html_safe, posts_path, { class: "nav-link" } %>
           </li>
-          <%= render 'shared/audit_log_tab' if current_user.admin? %>
+          <%= render "shared/audit_log_tab" if current_user.admin? %>
           <li class="nav-item <%= active?(new_post_path) %>">
-            <%= link_to "Request Overtime #{sr_only_span(posts_path)}".html_safe, new_post_path, { id: "new-post-from-nav", class: "nav-link" } %>
+            <%= link_to "<i class='fas fa-calendar-plus'></i> Request Overtime #{sr_only_span(posts_path)}".html_safe, new_post_path, { id: "new-post-from-nav", class: "nav-link" } %>
           </li>
         </ul>
         
